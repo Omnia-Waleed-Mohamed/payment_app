@@ -1,4 +1,5 @@
 import 'package:chechout_app/features/checkout/presentation/view/my_cart_view.dart';
+import 'package:chechout_app/features/checkout/presentation/view/payment_details_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
