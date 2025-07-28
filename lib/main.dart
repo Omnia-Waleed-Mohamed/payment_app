@@ -6,7 +6,6 @@ void main() {
   runApp(const ChechOutApp());
 }
 
-
 //https://www.figma.com/file/ZtjGQKt7C9dFGGfDOL9qbz/Credit-Card-Checkout-%26-Payment-App-Screen-(Community)?node-id=1%3A44&mode=dev
 class ChechOutApp extends StatelessWidget {
   const ChechOutApp({super.key});

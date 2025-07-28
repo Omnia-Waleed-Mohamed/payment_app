@@ -12,19 +12,13 @@ class MyCartView extends StatelessWidget {
         leading: Icon(Icons.arrow_back_ios_new),
         elevation: 0,
         centerTitle: true,
-
         title: const Text(
           'My Cart',
           textAlign: TextAlign.center,
-          style:Styles.style25, 
-         ),
+          style: Styles.style25,
+        ),
       ),
-
-      body:MyCartViewBody() ,
-      
-    
-      
+      body: MyCartViewBody(),
     );
   }
 }
-

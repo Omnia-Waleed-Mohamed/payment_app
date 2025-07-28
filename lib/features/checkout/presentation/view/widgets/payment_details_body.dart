@@ -8,15 +8,15 @@ import 'package:chechout_app/features/checkout/presentation/view/widgets/payment
 import 'package:flutter/material.dart';
 
 class PaymentDetailsBody extends StatefulWidget {
-   PaymentDetailsBody({super.key});
+  PaymentDetailsBody({super.key});
 
   @override
   State<PaymentDetailsBody> createState() => _PaymentDetailsBodyState();
 }
 
 class _PaymentDetailsBodyState extends State<PaymentDetailsBody> {
-final GlobalKey<FormState> formKey = GlobalKey();
-AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
   @override
   Widget build(BuildContext context) {
@@ -27,50 +27,43 @@ AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
       SliverToBoxAdapter(
         child: CustomCreditCard(
           autovalidateMode: autovalidateMode,
-          formKey: formKey,),
+          formKey: formKey,
+        ),
       ),
       SliverFillRemaining(
         hasScrollBody: false,
-        child:  Align(
+        child: Align(
           child: Padding(
-              padding: EdgeInsets.only(bottom: 20,left: 15,right: 15),
-              child: SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        formKey.currentState!.save();
-                        log('payment');
-                      }else{
-                        Navigator.of(context).push(MaterialPageRoute(builder: 
-                        (context) => ThankYouView()));
-                        autovalidateMode = AutovalidateMode.always;
-                        setState(() {
-                          
-                        });
-                      }
-                     // Navigator.push(
-                         // context,
-                         // MaterialPageRoute(
-                            //  builder: (context) => PaymentDetailsView()));
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                    ),
-                    child: Text(
-                      'payment',
-                      style: Styles.style22,
-                    )),
-              ),
+            padding: EdgeInsets.only(bottom: 20, left: 15, right: 15),
+            child: SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      log('payment');
+                    } else {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => ThankYouView()));
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                    // Navigator.push(
+                    // context,
+                    // MaterialPageRoute(
+                    //  builder: (context) => PaymentDetailsView()));
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.green,
+                  ),
+                  child: Text(
+                    'payment',
+                    style: Styles.style22,
+                  )),
             ),
+          ),
         ),
       )
-
-        
-        
-        
-      ]
-    );
+    ]);
   }
 }
-

@@ -2,6 +2,7 @@ import 'package:chechout_app/features/checkout/presentation/view/widgets/my_cart
 import 'package:chechout_app/features/checkout/presentation/view/widgets/payment_details_body.dart';
 import 'package:flutter/material.dart';
 import 'package:chechout_app/core/utils/style.dart';
+
 class PaymentDetailsView extends StatelessWidget {
   const PaymentDetailsView({super.key});
 
@@ -12,12 +13,11 @@ class PaymentDetailsView extends StatelessWidget {
         leading: Icon(Icons.arrow_back_ios_new),
         elevation: 0,
         centerTitle: true,
-
         title: const Text(
           'Payment Details',
           textAlign: TextAlign.center,
-          style:Styles.style25, 
-         ),
+          style: Styles.style25,
+        ),
       ),
       body: PaymentDetailsBody(),
     );
