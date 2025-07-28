@@ -23,4 +23,18 @@ class StripeService {
       merchantDisplayName: 'omnia',
     ));
   }
+
+
+  Future displayPaymentSheet()async{
+    Stripe.instance.presentPaymentSheet();
+  }
+
+
+  Future makePayment({required PaymentIntentModel paymentIntentModel}) async{
+
+   var paymentIntentInputModel =await createPaymentIntent(paymentIntentModel);
+   await initPaymentSheet(paymentIntentClientSecret:paymentIntentInputModel.clientSecret!);
+   await displayPaymentSheet();
+
+  }
 }
