@@ -1,0 +1,26 @@
+
+import 'dart:developer';
+
+import 'package:chechout_app/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
+import 'package:chechout_app/features/checkout/data/repos/checkout_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+part 'payment_state.dart';
+class PaymentCubit extends Cubit<PaymentState> {
+  PaymentCubit(this.checkoutRepo) : super(PaymentInitial());
+
+  final CheckoutRepo checkoutRepo;
+
+  Future<void> makePayment({required PaymentIntentModel paymentIntentModel}) async {
+    emit(PaymentLoading());
+    var data = await checkoutRepo.makePayment(paymentIntentModel: paymentIntentModel);
+    data.fold((l) => emit(PaymentFailure(l.errorMessage)), (r) => emit(PaymentSuccess()));
+  }
+
+  @override
+  void onChange(Change<PaymentState> change) {
+    log(change.toString());
+    super.onChange(change);
+  }
+
+}
