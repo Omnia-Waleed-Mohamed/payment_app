@@ -1,8 +1,11 @@
+import 'package:chechout_app/core/utils/api_keys.dart';
 import 'package:chechout_app/features/checkout/presentation/view/my_cart_view.dart';
 import 'package:chechout_app/features/checkout/presentation/view/payment_details_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 
 void main() {
+  Stripe.publishableKey = ApiKeys.publishableKey;
   runApp(const ChechOutApp());
 }
 

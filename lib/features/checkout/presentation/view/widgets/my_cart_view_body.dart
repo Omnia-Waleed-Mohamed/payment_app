@@ -1,8 +1,13 @@
 import 'package:chechout_app/core/utils/style.dart';
+import 'package:chechout_app/features/checkout/data/repos/checkout_repo_impl.dart';
 import 'package:chechout_app/features/checkout/presentation/view/payment_details_view.dart';
 import 'package:chechout_app/features/checkout/presentation/view/widgets/cart_info_item.dart';
+import 'package:chechout_app/features/checkout/presentation/view/widgets/payment_method.dart';
+import 'package:chechout_app/features/checkout/presentation/view/widgets/payment_methods_bottom_sheet.dart';
 import 'package:chechout_app/features/checkout/presentation/view/widgets/total_price.dart';
+import 'package:chechout_app/features/checkout/view_model/payment_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MyCartViewBody extends StatelessWidget {
   const MyCartViewBody({super.key});
@@ -44,10 +49,17 @@ class MyCartViewBody extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                   onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => PaymentDetailsView()));
+                    showModalBottomSheet(
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16)),
+                        builder: (context) {
+                          return BlocProvider(
+                            create: (context) =>
+                                PaymentCubit(CheckoutRepoImpl()),
+                            child: PaymentMethodeBottomSheet(),
+                          );
+                        });
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.green,
